@@ -36,7 +36,7 @@ simple LinkBreakVisualizerBase extends VisualizerBase
 
         string nodeFilter = default("*"); // which network nodes are considered, matches all nodes by default
         string interfaceFilter = default("*"); // which interfaces are considered, matches all interfaces by default
-        string packetFilter = default("true"); // which packets are considered, matches all packets by default
+        object packetFilter = default("*"); // which packets are considered, matches all packets by default
 
         string icon = default("status/stop");
         double iconTintAmount = default(0);

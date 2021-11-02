@@ -41,7 +41,7 @@ simple PacketDropVisualizerBase extends VisualizerBase
 
         string nodeFilter = default("*"); // which network nodes are considered, matches all network nodes by default
         string interfaceFilter = default("*"); // which network interfaces are considered, matches all network interfaces by default
-        string packetFilter = default("true"); // which packets are considered, matches all packets by default
+        object packetFilter = default("*"); // which packets are considered, matches all packets by default
         string detailsFilter = default("*"); // which packet drops are considered, matches all packet drops by default
 
         string icon = default("msg/packet_s"); // packet drop visualization icon

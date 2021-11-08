@@ -31,8 +31,8 @@ simple StreamRedundancyConfigurator like INetworkConfigurator
     parameters:
         int minVlanId = default(0); // lowest available VLAN ID
         int maxVlanId = default(4095); // highest available VLAN ID
-        object configuration = default([]); // a vector of objects (e.g. [{...}, {...}]) where each object has the following fields: name, source, destination, packetFilter, paths
-                                            // here is an example: [{name: "S1", packetFilter: "*", source: "source", destination: "destination", trees: [[["s1", "s2a", "s3a"]], [["s1", "s2b", "s3b"]], [["s1", "s2a", "s2b", "s3b"]], [["s1", "s2b", "s2a", "s3a"]]]}]
+        object configuration @mutable = default([]); // a vector of objects (e.g. [{...}, {...}]) where each object has the following fields: name, source, destination, packetFilter, paths
+                                                     // here is an example: [{name: "S1", packetFilter: "*", source: "source", destination: "destination", trees: [[["s1", "s2a", "s3a"]], [["s1", "s2b", "s3b"]], [["s1", "s2a", "s2b", "s3b"]], [["s1", "s2b", "s2a", "s3a"]]]}]
         @display("i=block/cogwheel");
 }
 

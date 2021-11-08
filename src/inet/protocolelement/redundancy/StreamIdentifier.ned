@@ -28,7 +28,7 @@ import inet.queueing.contract.IPacketFlow;
 simple StreamIdentifier extends PacketFlowBase like IPacketFlow
 {
     parameters:
-        object mapping = default([]); // array of objects, where each object specifies a stream name, a packetFilter and a dataFilter, for example [{stream: "s0", packetFilter: "*", dataFilter: "*"}, ...]
+        object mapping @mutable = default([]); // array of objects, where each object specifies a stream name, a packetFilter and a dataFilter, for example [{stream: "s0", packetFilter: "*", dataFilter: "*"}, ...]
         @class(StreamIdentifier);
         @display("i=block/blackboard");
 }

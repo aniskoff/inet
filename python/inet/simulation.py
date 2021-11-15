@@ -59,8 +59,10 @@ showcases = read_showcases()
 tutorials = read_tutorials()
 simulations = examples + showcases + tutorials
 
-def get_simulations(simulations = simulations, path_filter = ".*", fullMatch = False):
-    return filter(lambda simulation: re.search(path_filter if fullMatch else ".*" + path_filter + ".*", simulation['wd']), simulations)
+def get_simulations(simulations = simulations, path_filter = ".*", args_filter = ".*", fullMatch = False):
+    return filter(lambda simulation: re.search(path_filter if fullMatch else ".*" + path_filter + ".*", simulation['wd']) and \
+                                     re.search(args_filter if fullMatch else ".*" + args_filter + ".*", simulation['args']), \
+                  simulations)
 
 def clean_simulation_results(simulation):
     print("Cleaning simulation results, folder = " + simulation['wd'])

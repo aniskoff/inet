@@ -61,7 +61,7 @@ class INET_API Ppp : public MacProtocolBase
     virtual void encapsulate(Packet *msg);
     virtual void decapsulate(Packet *packet);
     virtual void refreshDisplay() const override;
-    // virtual void refreshOutGateConnection(bool connected);
+    virtual void refreshOutGateConnection(bool connected);
 
     // cListener function
     virtual void receiveSignal(cComponent *source, simsignal_t signalID, cObject *obj, cObject *details) override;
@@ -71,7 +71,6 @@ class INET_API Ppp : public MacProtocolBase
 
   public:
     virtual ~Ppp();
-    virtual void refreshOutGateConnection(bool connected);
 
   protected:
     virtual int numInitStages() const override { return NUM_INIT_STAGES; }

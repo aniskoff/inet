@@ -88,6 +88,8 @@ class INET_API MacProtocolBaseExtQ : public LayeredProtocolBase, public cListene
     virtual void handleStartOperation(LifecycleOperation *operation) override;
     virtual void handleStopOperation(LifecycleOperation *operation) override;
     virtual void handleCrashOperation(LifecycleOperation *operation) override;
+
+    queueing::IPacketQueue *getQueue(cGate *gate) const;
 };
 
 } // namespace inet

@@ -171,5 +171,17 @@ void MacProtocolBaseExtQ::receiveSignal(cComponent *source, simsignal_t signalID
     Enter_Method("%s", cComponent::getSignalName(signalID));
 }
 
+queueing::IPacketQueue *MacProtocolBaseExtQ::getQueue(cGate *gate) const
+{
+    for (auto g = gate->getPreviousGate(); g != nullptr; g = g->getPreviousGate()) {
+        if (g->getType() == cGate::OUTPUT) {
+            auto m = dynamic_cast<queueing::IPacketQueue *>(g->getOwnerModule());
+            if (m)
+                return m;
+        }
+    }
+    throw cRuntimeError("Gate %s is not connected to a module of type queueing::IPacketQueue", gate->getFullPath().c_str());
+}
+
 } // namespace inet
 

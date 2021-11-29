@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Runs all known simulations recursively from the current working directory
+
+ipython --no-banner -c 'from inet import *; run_simulations(path_filter = os.path.relpath(os.getcwd(), get_full_path(".")))'

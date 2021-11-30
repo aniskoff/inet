@@ -25,7 +25,7 @@ def get_fingerprint(simulation, ingredients = "tplx", sim_time_limit_factor = 1.
                 return result[0]
     return None
 
-def get_regression_test_extra_args(simulation, sim_time_limit_factor, **kwargs):
+def get_regression_test_extra_args(simulation, sim_time_limit_factor = "1.0", **kwargs):
     fingerprint = get_fingerprint(simulation, "tplx", sim_time_limit_factor) or "0000-0000/tplx"
     return ["--fingerprintcalculator-class", "inet::FingerprintCalculator", "--fingerprint", fingerprint]
 

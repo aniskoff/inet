@@ -21,17 +21,19 @@ def check_test_result(result):
     return result.returncode == 0
 
 def run_test(test_check = check_test_result, **kwargs):
-    result = run_simulation(print_end = " ", **kwargs)
+    result = run_simulation(print_end = " ", check_result = return_result, **kwargs)
     test_result = test_check(result, **kwargs)
     print_test_result(test_result)
+    return result
 
 def run_test2(simulation, test_check = check_test_result, **kwargs):
-    result = run_simulation2(simulation, print_end = " ", **kwargs)
+    result = run_simulation2(simulation, print_end = " ", check_result = return_result, **kwargs)
     test_result = test_check(result, **kwargs)
     print_test_result(test_result)
+    return result
 
 def run_tests(**kwargs):
     tests = get_tests(**kwargs)
     if "test_filter" in kwargs:
         del kwargs["test_filter"]
-    run_simulations(tests, run_simulation = run_test2, **kwargs)
+    return run_simulations(tests, run_simulation = run_test2, check_result = return_result, **kwargs)

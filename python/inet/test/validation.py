@@ -2,18 +2,19 @@ import itertools
 import numpy
 import random
 
-import inet.test.run
-
 from omnetpp.scave.results import *
 from inet.test.run import *
 
+def compare_test_results(result1, result2, accuracy = 0.01):
+    return abs(result1 - result2) / result1 < accuracy
+
 def run_validation_tsn_framereplication_simulation(**kwargs):
-    return run_simulation(working_directory = "/validation/tsn/framereplication/", sim_time_limit = "0.1s", print_end = " ", **kwargs)
+    return run_simulation(working_directory = "/tests/validation/tsn/framereplication/", sim_time_limit = "0.1s", print_end = " ", **kwargs)
 
 def compute_frame_replication_success_rate_with_simulation(**kwargs):
     run_validation_tsn_framereplication_simulation(**kwargs)
     filter_expression = """type =~ scalar AND ((module =~ "*.destination.udp" AND name =~ packetReceived:count) OR (module =~ "*.source.udp" AND name =~ packetSent:count))"""
-    df = read_result_files("validation/tsn/framereplication/results/*.sca", filter_expression = filter_expression)
+    df = read_result_files("tests/validation/tsn/framereplication/results/*.sca", filter_expression = filter_expression)
     df = get_scalars(df)
     packetSent = float(df[df.name == "packetSent:count"].value)
     packetReceived = float(df[df.name == "packetReceived:count"].value)
@@ -56,40 +57,62 @@ def run_validation_tsn_framereplication_test(test_accuracy = 0.01, **kwargs):
     ps = compute_frame_replication_success_rate_with_simulation(**kwargs)
     pa1 = compute_frame_replication_success_rate_analytically1()
     pa2 = compute_frame_replication_success_rate_analytically2()
-    test_result1 = abs(ps - pa1) / pa1 < test_accuracy
-    test_result2 = abs(ps - pa2) / pa2 < test_accuracy
+    test_result1 = compare_test_results(ps, pa1, test_accuracy)
+    test_result2 = compare_test_results(ps, pa2, test_accuracy)
     print_test_result(test_result1 and test_result2)
 
 def run_validation_tsn_trafficshaping_asynchronousshaper_simulation(**kwargs):
-    run_simulation(working_directory = "/validation/tsn/trafficshaping/asynchronousshaper", sim_time_limit = "10s", print_end = " ", **kwargs)
+    run_simulation(working_directory = "/tests/validation/tsn/trafficshaping/asynchronousshaper", sim_time_limit = "0.1s", print_end = " ", **kwargs)
 
-def compute_asynchronousshaper_todo_with_simulation(**kwargs):
+def compute_asynchronousshaper_endtoend_delay_with_simulation(**kwargs):
     run_validation_tsn_trafficshaping_asynchronousshaper_simulation(**kwargs)
     return 0
 
-def compute_asynchronousshaper_todo_analytically():
+def compute_asynchronousshaper_endtoend_delay_analytically():
     return 0
 
 def run_validation_tsn_trafficshaping_asynchronousshaper_test(**kwargs):
-    v1 = compute_asynchronousshaper_todo_with_simulation(**kwargs)
-    v2 = compute_asynchronousshaper_todo_analytically()
+    v1 = compute_asynchronousshaper_endtoend_delay_with_simulation(**kwargs)
+    v2 = compute_asynchronousshaper_endtoend_delay_analytically()
     test_result = v1 == v2
     print_test_result(test_result)
 
 def run_validation_tsn_trafficshaping_creditbasedshaper_simulation(**kwargs):
-    return run_simulation(working_directory = "/validation/tsn/trafficshaping/creditbasedshaper", sim_time_limit = "1s", print_end = " ", **kwargs)
+    return run_simulation(working_directory = "/tests/validation/tsn/trafficshaping/creditbasedshaper", sim_time_limit = "1s", print_end = " ", **kwargs)
 
-def compute_creditbasedshaper_todo_with_simulation(**kwargs):
+def compute_creditbasedshaper_endtoend_delay_with_simulation(**kwargs):
     run_validation_tsn_trafficshaping_creditbasedshaper_simulation(**kwargs)
-    return 0
+    filter_expression = """type =~ scalar AND (name =~ meanBitLifeTimePerPacket:histogram:min OR name =~ meanBitLifeTimePerPacket:histogram:max OR name =~ meanBitLifeTimePerPacket:histogram:mean OR name =~ meanBitLifeTimePerPacket:histogram:stddev)"""
+    df = read_result_files("tests/validation/tsn/trafficshaping/creditbasedshaper/results/*.sca", filter_expression = filter_expression, include_fields_as_scalars = True)
+    df = get_scalars(df)
+    df["name"] = df["name"].map(lambda name: re.sub(".*(min|max|mean|stddev)", "\\1", name))
+    df["module"] = df["module"].map(lambda name: re.sub(".*app\\[0\\].*", "Best effort", name))
+    df["module"] = df["module"].map(lambda name: re.sub(".*app\\[1\\].*", "Medium", name))
+    df["module"] = df["module"].map(lambda name: re.sub(".*app\\[2\\].*", "High", name))
+    df["module"] = df["module"].map(lambda name: re.sub(".*app\\[3\\].*", "Critical", name))
+    df = df.loc[df['module']!='Best effort']
+    df = pd.pivot_table(df, index="module", columns="name", values="value")
+    return df * 1000000
 
-def compute_creditbasedshaper_todo_analytically(**kwargs):
-    return 0
+def compute_creditbasedshaper_endtoend_delay_analytically(**kwargs):
+    # Network Definition CoRE4INET: examples/tsn/medium_network
+    # TODO refer to paper
+    return pd.DataFrame(index = ["Medium", "High", "Critical"],
+                        # TODO critical value
+                        data = {"min": [88.2, 60.8, 253],
+                                "max": [540, 307, 375],
+                                "mean": [247, 161, 298],
+                                "stddev": [107, 73.6, 0]})
 
-def run_validation_tsn_trafficshaping_creditbasedshaper_test(**kwargs):
-    v1 = compute_creditbasedshaper_todo_with_simulation(**kwargs)
-    v2 = compute_creditbasedshaper_todo_analytically(**kwargs)
-    test_result = v1 == v2
+def run_validation_tsn_trafficshaping_creditbasedshaper_test(test_accuracy = 0.01, **kwargs):
+    df1 = compute_creditbasedshaper_endtoend_delay_with_simulation(**kwargs)
+    df2 = compute_creditbasedshaper_endtoend_delay_analytically(**kwargs)
+    df1 = df1.sort_index(axis = 0).sort_index(axis = 1)
+    df2 = df2.sort_index(axis = 0).sort_index(axis = 1)
+    test_result = numpy.allclose(df1['min'], df2['min'], rtol=test_accuracy, atol=0) and \
+                  (df1['max'] < df2['max']).all() and \
+                  numpy.allclose(df1['mean'], df2['mean'], rtol=test_accuracy, atol=0) and \
+                  numpy.allclose(df1['stddev'], df2['stddev'], rtol=test_accuracy, atol=0)
     print_test_result(test_result)
 
 def run_validation_tests(**kwargs):

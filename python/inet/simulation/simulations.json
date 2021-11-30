@@ -234,7 +234,7 @@
   "sim_time_limit": "0.1s",
   "tags": ["ethernet", "tsn"]},
  {"uuid": "2d758c82-79d0-46a5-9eaf-b36787f9b4d2",
-  "working_directory": "/validation/tsn/trafficshaping/asynchronousshaper/",
+  "working_directory": "/tests/validation/tsn/trafficshaping/asynchronousshaper/",
   "ini_file": "omnetpp.ini", "config": "General", "run": 0,
   "sim_time_limit": "0.1s",
   "tags": ["ethernet", "tsn"]}]

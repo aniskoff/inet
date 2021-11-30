@@ -66,4 +66,4 @@ all_tutorials = read_tutorials()
 all_old_simulations = all_examples + all_showcases + all_tutorials
 all_simulations = load_simulations(get_full_path("python/inet/simulation/simulations.json"))
 
-workspace = omnetpp.scave.analysis.Workspace(omnetpp.scave.analysis.Workspace.find_workspace(), [])
+workspace = omnetpp.scave.analysis.Workspace(omnetpp.scave.analysis.Workspace.find_workspace(get_full_path(".")), [])

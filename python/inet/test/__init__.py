@@ -1,6 +1,5 @@
 from inet.test.fingerprints import *
 from inet.test.leak import *
-from inet.test.oldfingerprinttest import *
 from inet.test.regression import *
 from inet.test.run import *
 from inet.test.smoke import *

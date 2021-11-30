@@ -1,8 +1,7 @@
 import json
 import os
 
-def get_full_path(resource):
-    return os.environ['INET_ROOT'] + "/" + resource
+from inet.common import *
 
 def load_fingerprints(file_name):
     return json.load(open(file_name))

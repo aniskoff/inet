@@ -1,11 +1,8 @@
 import csv
 import json
-import omnetpp
-import os
 import re
 
-def get_full_path(resource):
-    return os.environ['INET_ROOT'] + "/" + resource
+from inet.common import *
 
 def load_simulations(file_name):
     simulations = json.load(open(file_name))
@@ -65,5 +62,3 @@ all_showcases = read_showcases()
 all_tutorials = read_tutorials()
 all_old_simulations = all_examples + all_showcases + all_tutorials
 all_simulations = load_simulations(get_full_path("python/inet/simulation/simulations.json"))
-
-workspace = omnetpp.scave.analysis.Workspace(omnetpp.scave.analysis.Workspace.find_workspace(get_full_path(".")), [])

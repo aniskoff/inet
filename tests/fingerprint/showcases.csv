@@ -53,6 +53,54 @@
 /showcases/routing/manet/,           -f omnetpp.ini -c Dsdv -r 0,                   100s,         4eff-8dbc/tplx;bdad-9a28/~tNl;cdce-1d3c/~tND;0fca-2874/tyf, PASS,    wireless
 /showcases/routing/manet/,           -f omnetpp.ini -c Gpsr -r 0,                   100s,         53c9-5456/tplx;5452-5da6/~tNl;9c5c-ecb8/tyf, PASS,    wireless
 
+/showcases/tsn/combiningfeatures/frerandtas/, -f omnetpp.ini -c General -r 0,          5s,        5258-374a/tplx;7a4e-ed48/~tNl;7516-65c2/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/gptpandtas/, -f omnetpp.ini -c NormalOperation -r 0,  4s,        a783-5fe0/tplx;49c8-b06b/~tNl;19bd-cae5/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/gptpandtas/, -f omnetpp.ini -c LinkFailure -r 0,      4s,        e022-d123/tplx;c0ff-9dd5/~tNl;919e-5a32/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/gptpandtas/, -f omnetpp.ini -c Failover -r 0,         4s,        7b2b-4303/tplx;e06d-20d6/~tNl;b705-ed87/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c StandardEthernet -r 0, 0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c StandardEthernet -r 1, 0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c StandardEthernet -r 2, 0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c StandardEthernet -r 3, 0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c ManualTsn -r 0,        0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c ManualTsn -r 1,        0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c ManualTsn -r 2,        0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c ManualTsn -r 3,        0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c AutomaticTsn -r 0,     0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c AutomaticTsn -r 1,     0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c AutomaticTsn -r 2,     0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/combiningfeatures/invehicle/,  -f omnetpp.ini -c AutomaticTsn -r 3,     0.1s,        0000-0000/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/cutthroughswitching/, -f omnetpp.ini -c StoreAndForward -r 0,           0.1s,      3c5a-e576/tplx;5a39-d363/~tNl;f18b-4c9d/~tND, PASS, ethernet
+/showcases/tsn/cutthroughswitching/, -f omnetpp.ini -c CutthroughSwitching -r 0,       0.1s,      64ec-2d8a/tplx;684b-ee31/~tNl;d173-1ffa/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c FifoQueueing -r 0,              0.1s,      5f44-d3bc/tplx;9aa2-1084/~tNl;ba36-ed50/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c PriorityQueueing -r 0,          0.1s,      b37c-bc88/tplx;5243-40fd/~tNl;c5be-190e/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c FramePreemption -r 0,           0.1s,      0179-6348/tplx;6294-de28/~tNl;68c7-5de7/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c RealisticBase -r 0,             0.1s,      6b09-30a5/tplx;628d-4692/~tNl;fd8b-1cd4/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c RealisticFifoQueueing -r 0,     0.1s,      6c1b-b5fd/tplx;1fc7-e5e6/~tNl;af31-ef6f/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c RealisticPriorityQueueing -r 0, 0.1s,      9968-8c5b/tplx;d4b7-0d95/~tNl;863f-014c/~tND, PASS, ethernet
+/showcases/tsn/framepreemption/,     -f omnetpp.ini -c RealisticFramePreemption -r 0,  0.1s,      87a2-e4fe/tplx;58c9-b6a6/~tNl;1923-34c9/~tND, PASS, ethernet
+/showcases/tsn/framereplication/automaticfailureprotection/, -f omnetpp.ini -c General -r 0,      0.1s,         5301-1540/tplx;d5a6-4ca7/~tNl;b327-74b7/~tND, PASS, ethernet
+/showcases/tsn/framereplication/automaticmultipathconfiguration/, -f omnetpp.ini -c General -r 0, 0.1s,         dfe4-ef49/tplx;f720-ebd8/~tNl;9657-4442/~tND, PASS, ethernet
+/showcases/tsn/framereplication/manualconfiguration/, -f omnetpp.ini -c General -r 0,             0.1s,         5606-a8fe/tplx;eea8-adaa/~tNl;9657-bc7d/~tND, PASS, ethernet
+/showcases/tsn/framereplication/multicastfailureprotection/, -f omnetpp.ini -c General -r 0,      0.01s,        8b01-5f28/tplx;866a-eb64/~tNl;e2d9-84c8/~tND, PASS, ethernet
+/showcases/tsn/gatescheduling/eager/,    -f omnetpp.ini -c General -r 0,                          1s,           e235-afbf/tplx;9e2e-4ef2/~tNl;fe05-dc35/~tND, PASS, ethernet
+/showcases/tsn/gatescheduling/sat/,      -f omnetpp.ini -c General -r 0,                          1s,           e235-afbf/tplx;9e2e-4ef2/~tNl;fe05-dc35/~tND, PASS, ethernet
+/showcases/tsn/gatescheduling/tsnsched/, -f omnetpp.ini -c General -r 0,                          1s,           e235-afbf/tplx;9e2e-4ef2/~tNl;fe05-dc35/~tND, PASS, ethernet
+/showcases/tsn/streamfiltering/statistical/,  -f omnetpp.ini -c General -r 0,                     1s,           e235-afbf/tplx;9e2e-4ef2/~tNl;fe05-dc35/~tND, PASS, ethernet
+/showcases/tsn/streamfiltering/tokenbucket/,  -f omnetpp.ini -c General -r 0,                     1s,           75aa-9ce3/tplx;99d1-da04/~tNl;b891-88f4/~tND, PASS, ethernet
+/showcases/tsn/streamfiltering/underthehood/, -f omnetpp.ini -c General -r 0,                     1s,           8225-8839/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/clockdrift/, -f omnetpp.ini -c NoClockDrift -r 0,              0.1s,         9685-3908/tplx;d964-5b56/~tNl;6fd3-6270/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/clockdrift/, -f omnetpp.ini -c ConstantClockDriftRate -r 0,    0.1s,         6784-f8cd/tplx;e4d1-4e75/~tNl;142a-5006/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/clockdrift/, -f omnetpp.ini -c OutOfBandSynchronization -r 0,  0.1s,         2363-b3dc/tplx;7869-111b/~tNl;c39a-7798/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/clockdrift/, -f omnetpp.ini -c GptpSynchronization -r 0,       0.1s,         c5fe-9691/tplx;d441-af59/~tNl;5a16-a049/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/gptp/, -f omnetpp.ini -c OneMasterClock -r 0,                             1s,         e183-bd2f/tplx;58cd-e051/~tNl;2846-2b71/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/gptp/, -f omnetpp.ini -c PrimaryAndHotStandbyMasterClocks -r 0,           1s,         a0c1-5505/tplx;ec26-c4ae/~tNl;162f-b1cc/~tND, PASS, ethernet
+/showcases/tsn/timesynchronization/gptp/, -f omnetpp.ini -c TwoMasterClocksExploitingNetworkRedundancy -r 0, 1s,         4a01-6643/tplx;462f-b718/~tNl;c58c-833c/~tND, PASS, ethernet
+/showcases/tsn/trafficshaping/asynchronousshaper/, -f omnetpp.ini -c General -r 0,                1s,         c9f5-9910/tplx;cb67-0499/~tNl;1485-ebc4/~tND, PASS, ethernet
+/showcases/tsn/trafficshaping/creditbasedshaper/,  -f omnetpp.ini -c General -r 0,                1s,         a490-80fb/tplx;8fa5-95a4/~tNl;5583-8736/~tND, PASS, ethernet
+/showcases/tsn/trafficshaping/mixingshapers/,      -f omnetpp.ini -c General -r 0,                1s,         2b3c-ef86/tplx;b7e5-8750/~tNl;a86c-ff3a/~tND, PASS, ethernet
+/showcases/tsn/trafficshaping/timeawareshaper/,    -f omnetpp.ini -c General -r 0,                1s,         002e-fd2c/tplx;ac0f-4da8/~tNl;2d07-3e5f/~tND, PASS, ethernet
+/showcases/tsn/trafficshaping/underthehood/,       -f omnetpp.ini -c General -r 0,                0.1s,       d867-2427/tplx;0000-0000/~tNl;0000-0000/~tND, PASS, ethernet
+
 # /showcases/visualizer/canvas/advanced/,     -f omnetpp.ini -c IncludingMultipleVisualizerModules -r 0, 100s, 1b92-4be3/tplx;0000-0000/~tNl;0000-0000/~tND, PASS,
 # /showcases/visualizer/canvas/advanced/,     -f omnetpp.ini -c Wireless -r 0,               5s,         1543-37d9/tplx;0000-0000/~tNl;0000-0000/~tND, PASS,    wireless
 

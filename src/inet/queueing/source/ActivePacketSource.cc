@@ -54,7 +54,9 @@ void ActivePacketSource::handleMessage(cMessage *message)
 
 void ActivePacketSource::scheduleProductionTimer()
 {
-    scheduleClockEventAfter(productionIntervalParameter->doubleValue(), productionTimer);
+    //scheduleClockEventAfter(productionIntervalParameter->doubleValue(), productionTimer);
+    scheduleClockEventAfter(deltaTimeForEvents[currentDeltaTimePos], productionTimer);
+    currentDeltaTimePos = (currentDeltaTimePos + 1) % (deltaTimeForEvents.size());
 }
 
 void ActivePacketSource::producePacket()

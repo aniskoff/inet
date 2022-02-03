@@ -45,7 +45,7 @@ class INET_API ActivePacketSource : public ClockUserModuleMixin<ActivePacketSour
     virtual void handlePushPacketProcessed(Packet *packet, cGate *gate, bool successful) override;
   private:
     int currentDeltaTimePos = 0;
-    std::vector<float> deltaTimeForEvents = {5., 6., 10.};
+    std::vector<float> deltaTimeForEvents = {0, 0, -11.};
 };
 
 } // namespace queueing

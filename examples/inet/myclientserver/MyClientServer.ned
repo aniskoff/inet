@@ -14,18 +14,23 @@ network MyClientServer
     types:
         channel C extends DatarateChannel
         {
-            datarate = 1Mbps;
+            datarate = 5Mbps;
             delay = 0.1us;
             per = parent.per;
         }
     submodules:
         client1: StandardHost {
             parameters:
-                @display("p=250,150;i=device/pc3");
+                @display("p=250,150;i=device/terminal,grey");
+        }
+
+        client2: StandardHost {
+            parameters:
+                @display("i=device/terminal,black");
         }
         server: StandardHost {
             parameters:
-                @display("p=400,150;i=device/pc2");
+                @display("p=400,150;i=device/server,gold");
         }
         configurator: Ipv4NetworkConfigurator {
             parameters:
@@ -33,4 +38,5 @@ network MyClientServer
         }
     connections:
         client1.pppg++ <--> C <--> server.pppg++;
+        client2.pppg++ <--> C <--> server.pppg++;
 }

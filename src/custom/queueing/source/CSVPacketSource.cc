@@ -47,8 +47,9 @@ void CSVPacketSource::initialize(int stage)
     if (!productionTimer->isScheduled() && (consumer == nullptr || consumer->canPushSomePacket(outputGate->getPathEndGate()))) 
     {
       
-      double initT = std::atof(((*csvIter)[CSVPos::timePos]).data());  // CSVReader.getTime()
-      int packetSize = std::atoi(((*csvIter)[CSVPos::sizePos]).data()); // CSVReader.getPacketSize();
+      std::cout << "initT = " << ((*csvIter)[CSVPos::timePos]).data() << " packetSize = " << ((*csvIter)[CSVPos::sizePos]).data() << std::endl;
+      double initT = std::atof(((*csvIter)[CSVPos::timePos]).data());  
+      int packetSize = std::atoi(((*csvIter)[CSVPos::sizePos]).data()); 
       scheduleProductionTimer(initT, packetSize);
       ++csvIter;
       
@@ -56,6 +57,7 @@ void CSVPacketSource::initialize(int stage)
     }
   }
 }
+
 
 void CSVPacketSource::handleMessage(cMessage* msg)
 {

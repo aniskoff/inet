@@ -5,9 +5,9 @@ CSVRow::CSVRow(char csv_sep)
   :m_csv_sep(csv_sep)
 {}
 
-std::string_view CSVRow::operator[](std::size_t index) const
+std::string CSVRow::operator[](std::size_t index) const
 {
-    return std::string_view(&m_line[m_data[index] + 1], m_data[index + 1] -  (m_data[index] + 1));
+    return m_line.substr(m_data[index] + 1, m_data[index + 1] -  (m_data[index] + 1));
 }
 std::size_t CSVRow::size() const
 {

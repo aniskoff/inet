@@ -10,9 +10,9 @@
 class CSVRow
 {
     public:
-      explicit CSVRow(char csv_sep='\t');
+      explicit CSVRow(char csv_sep);
 
-      std::string_view operator[](std::size_t index) const;
+      std::string operator[](std::size_t index) const;
       std::size_t size() const;
       void readNextRow(std::istream& str);
     private:

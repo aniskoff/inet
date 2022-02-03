@@ -6,6 +6,7 @@ CSVIterator::CSVIterator(std::istream& str, char csv_sep)
 { ++(*this); }
 CSVIterator::CSVIterator()
   :m_str(nullptr)
+  ,m_row(0)
 {}
 
 // Pre Increment

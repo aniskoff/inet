@@ -17,7 +17,7 @@ network MainExperiment
     types:
         channel C extends DatarateChannel
         {
-            datarate = 5Mbps;
+            datarate = 1Mbps;
             delay = 0.1us;
             per = parent.per;
         }
@@ -25,7 +25,7 @@ network MainExperiment
 
         observer: SimpleObserver {
             parameters:
-                @display("i=block/circle");
+                @display("i=block/circle;p=810,100");
         }
 
         //----------------->HOSTS<----------------------//

@@ -89,3 +89,7 @@ xxx
 /tmp/
 /.computed/
 *.DS_Store
+
+
+**/results_analisys/
+

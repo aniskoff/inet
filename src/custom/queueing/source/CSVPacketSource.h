@@ -30,8 +30,13 @@ class INET_API CSVPacketSource : public ClockUserModuleMixin<ActivePacketSourceB
     void scheduleTimerAndProducePacket();
       
   private:
+
+    void fastForwardCSVIterToStartTime();
+    double shiftedStartRelative(double t);
     const char* csvFilePath = nullptr;
     char csvSep = '\t';
+    double timePacketsStart;
+    double timePacketsEnd;
     std::ifstream csvInStream;
     CSVIterator csvIter;
 

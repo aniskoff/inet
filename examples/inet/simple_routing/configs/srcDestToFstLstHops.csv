@@ -1,1 +1,6 @@
-client1,server1,router1,router4
+s11l,s11r,n1tl,n1tr
+s12l,s32r,n1tl,n3tr
+s21l,s21r,n2tl,n2tr
+s22l,s12r,n2tl,n1tr
+s31l,s22r,n3tl,n2tr
+s32l,s31r,n3tl,n3tr

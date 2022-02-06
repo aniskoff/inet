@@ -11,6 +11,8 @@ simple CSVPacketSource extends PacketSourceBase like IActivePacketSource
         // volatile double productionInterval @unit(s); // elapsed time between subsequent packets pushed to the connected packet consumer
         string csvFilePath;
         int csvSep;
+        double timePacketsStart;
+        double timePacketsEnd;
 
         @class(CSVPacketSource);
         @display("i=block/source");

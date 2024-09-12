@@ -55,12 +55,17 @@ void ActivePacketSource::handleMessage(cMessage *message)
 void ActivePacketSource::scheduleProductionTimer()
 {
     scheduleClockEventAfter(productionIntervalParameter->doubleValue(), productionTimer);
+    // scheduleClockEventAfter(deltaTimeForEvents[currentDeltaTimePos], productionTimer);
+    // currentDeltaTimePos = (currentDeltaTimePos + 1) % (deltaTimeForEvents.size());
 }
 
 void ActivePacketSource::producePacket()
 {
     auto packet = createPacket();
     EV_INFO << "Producing packet" << EV_FIELD(packet) << EV_ENDL;
+    ///////
+    EV_INFO << "Current simTime is: " << simTime() << EV_ENDL;
+    ///////
     pushOrSendPacket(packet, outputGate, consumer);
     updateDisplayString();
 }

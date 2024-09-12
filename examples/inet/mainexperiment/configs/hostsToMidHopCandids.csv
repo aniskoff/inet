@@ -1,0 +1,12 @@
+s11l,n1a,n2a
+s11r,n1a,n2a
+s12l,n1a,n2a
+s32r,n1a,n2a
+s21l,n2a,n3a
+s21r,n2a,n3a
+s22l,n2a,n1a
+s12r,n2a,n1a
+s31l,n2a,n3a
+s22r,n2a,n3a
+s32l,n3a,n2a
+s31r,n3a,n2a

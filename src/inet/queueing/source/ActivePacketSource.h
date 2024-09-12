@@ -20,6 +20,7 @@
 
 #include "inet/common/clock/ClockUserModuleMixin.h"
 #include "inet/queueing/base/ActivePacketSourceBase.h"
+#include <vector>
 
 namespace inet {
 namespace queueing {
@@ -42,6 +43,9 @@ class INET_API ActivePacketSource : public ClockUserModuleMixin<ActivePacketSour
 
     virtual void handleCanPushPacketChanged(cGate *gate) override;
     virtual void handlePushPacketProcessed(Packet *packet, cGate *gate, bool successful) override;
+  private:
+    int currentDeltaTimePos = 0;
+    std::vector<float> deltaTimeForEvents = {0, 0, -11.};
 };
 
 } // namespace queueing

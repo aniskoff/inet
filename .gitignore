@@ -1,3 +1,6 @@
+# direnv
+.envrc
+.direnv/
 # local and generated files not to be committed
 src/Makefile
 src/Makefile.vc
